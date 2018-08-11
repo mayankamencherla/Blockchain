@@ -21,7 +21,7 @@ class Block {
      * Origin of the blockchain
      */
     static genesis() {
-      const timestamp = Date.now();
+      const timestamp = '123791827391273';
       const lastHash = '-----';
       const data = [];
       const hash = Block.hash(timestamp, lastHash, data);
@@ -39,6 +39,10 @@ class Block {
 
     static hash(timestamp, lastHash, data) {
       return SHA256(`${timestamp}${lastHash}${data}`).toString();
+    }
+
+    static getHash(block) {
+      return Block.hash(block.timestamp, block.lastHash, block.data);
     }
 }
 

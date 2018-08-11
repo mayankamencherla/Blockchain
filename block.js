@@ -21,7 +21,12 @@ class Block {
      * Origin of the blockchain
      */
     static genesis() {
-      return new this('Random timestamp', '-----', 'f1r57-h45h', []);
+      const timestamp = Date.now();
+      const lastHash = '-----';
+      const data = [];
+      const hash = Block.hash(timestamp, lastHash, data);
+
+      return new this(timestamp, lastHash, hash, data);
     }
 
     static mineBlock(lastBlock, data) {

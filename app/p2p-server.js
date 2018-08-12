@@ -3,7 +3,7 @@ const Websocket = require('ws');
 const P2P_PORT = process.env.P2P_PORT || 5001;
 
 // ws://localhost:5001, ws://localhost:5002 ....
-const peers = process.env.PEER ? process.end.PEERS.split(',') : [];
+const peers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 
 class P2pServer {
   constructor(blockchain) {
@@ -17,7 +17,17 @@ class P2pServer {
     // Connect incoming socket requests to server
     server.on('connection', socket => this.connectSocket(socket));
 
+    this.connectToPeers();
+
     console.log(`Listening for peer to peer connections on ${P2P_PORT}`);
+  }
+
+  connectToPeers() {
+    peers.forEach(peer => {
+      const socket = new Websocket(peer);
+
+      socket.on('open', () => this.connectSocket(socket));
+    });
   }
 
   connectSocket(socket) {
@@ -25,3 +35,5 @@ class P2pServer {
     console.log('Socket connected');
   }
 };
+
+module.exports = P2pServer;

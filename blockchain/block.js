@@ -1,4 +1,4 @@
-const SHA256 = require('crypto-js/sha256');
+const ChainUtil = require('../chain-util');
 
 const {DIFFICULTY, MINE_RATE} = require('../constants');
 
@@ -30,7 +30,7 @@ class Block {
       const timestamp = '123791827391273';
       const lastHash = '-----';
       const data = [];
-      const hash = Block.hash(timestamp, lastHash, data);
+      const hash = ChainUtil.hash(timestamp, lastHash, data);
 
       return new this(timestamp, lastHash, hash, data, 0, DIFFICULTY);
     }
@@ -60,7 +60,8 @@ class Block {
     }
 
     static hash(timestamp, lastHash, data, nonce, difficulty) {
-      return SHA256(`${timestamp}${lastHash}${data}${nonce}${difficulty}`).toString();
+      const string = `${timestamp}${lastHash}${data}${nonce}${difficulty}`;
+      return ChainUtil.hash(string);
     }
 
     static getHash(block) {

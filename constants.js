@@ -1,5 +1,7 @@
-const DIFFICULTY = 4;
+const DIFFICULTY = 3;
+const MINE_RATE = 3000;
 
 module.exports = {
-  DIFFICULTY
+  DIFFICULTY,
+  MINE_RATE
 };

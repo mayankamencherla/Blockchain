@@ -19,7 +19,7 @@ app.post('/mine', (req, res) => {
   const block = bc.addBlock(req.body.data);
   console.log(`New block added: ${block.toString()}`);
 
-  // Sync all chains
+  // Sync all chains - making a decentralized system
   p2pServer.syncChains();
 
   res.redirect('/blocks');

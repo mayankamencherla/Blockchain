@@ -27,4 +27,8 @@ describe('Transaction', () => {
     transaction = Transaction.newTransaction(wallet, recipient, 500000);
     expect(transaction).toEqual(undefined);
   });
+
+  it('inputs the balance of the wallet', () => {
+    expect(transaction.input.amount).toEqual(wallet.balance);
+  });
 });

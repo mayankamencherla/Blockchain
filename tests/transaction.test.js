@@ -40,4 +40,38 @@ describe('Transaction', () => {
     transaction.outputs[0].amount = 560000;
     expect(Transaction.verifyTransaction(transaction)).toBe(false);
   });
+
+  it('updates transaction when amount is less than wallet balance', () => {
+    const nextAmount = 20;
+    const nextRecipient = 'n3x7-4ddr355';
+
+    let op = transaction.outputs.find(output => output.address === wallet.publicKey);
+
+    const initialAmount = op.amount;
+
+    transaction.update(wallet, nextRecipient, nextAmount);
+
+    op = transaction.outputs.find(output => output.address === wallet.publicKey);
+
+    expect(op.amount).toEqual(initialAmount - nextAmount);
+
+    const nextRecipientOutput = transaction.outputs.find(output => output.address === nextRecipient);
+
+    expect(nextRecipientOutput.amount).toEqual(nextAmount);
+  });
+
+  it('does not update transaction when amount is greater than wallet balance', () => {
+    const nextAmount = 20000;
+    const nextRecipient = 'n3x7-4ddr355';
+
+    let op = transaction.outputs.find(output => output.address === wallet.publicKey);
+
+    const initialAmount = op.amount;
+
+    transaction.update(wallet, nextRecipient, nextAmount);
+
+    op = transaction.outputs.find(output => output.address === wallet.publicKey);
+
+    expect(op.amount).toEqual(initialAmount);
+  });
 });

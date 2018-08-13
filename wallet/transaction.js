@@ -18,7 +18,7 @@ class Transaction {
     senderOutput.amount -= amount;
 
     this.outputs.push({
-      amont,
+      amount,
       address: recipient
     });
 

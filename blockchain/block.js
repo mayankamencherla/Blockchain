@@ -1,6 +1,6 @@
 const SHA256 = require('crypto-js/sha256');
 
-const DIFFICULTY = 4;
+const {DIFFICULTY} = require('../constants');
 
 class Block {
     constructor(timestamp, lastHash, hash, data, nonce) {

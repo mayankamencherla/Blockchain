@@ -28,9 +28,11 @@ class TransactionPool {
   validTransactions() {
     return this.transactions.filter(transaction => {
       const outputTotal = transaction.outputs.reduce((total, output) => {
-        total += output.amount;
+        total += parseInt(output.amount);
         return total;
       }, 0);
+
+      console.log(`total: ${outputTotal}`);
 
       if (outputTotal !== transaction.input.amount) {
         console.log(`Invalid transaction from ${transaction.input.address}`);

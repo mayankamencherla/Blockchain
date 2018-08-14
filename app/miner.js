@@ -14,7 +14,7 @@ class Miner {
 
     // Include a reward for the miner in the valid validTransactions
     validTransactions.push(
-      Transation.rewardTransaction(this.wallet, Wallet.blockchainWallet())
+      Transaction.rewardTransaction(this.wallet, Wallet.blockchainWallet())
     );
 
     // Create a block containing all valid transactions

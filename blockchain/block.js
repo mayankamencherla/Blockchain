@@ -43,6 +43,8 @@ class Block {
 
       let {difficulty} = lastBlock;
 
+      console.log(`Mining block containing ${JSON.stringify(data)}`);
+
       // Proof of work algorithm
       // We break when hash has DIFFICULTY number
       // of leading zeroes

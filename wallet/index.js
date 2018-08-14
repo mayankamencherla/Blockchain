@@ -41,6 +41,7 @@ class Wallet {
 
   static blockchainWallet() {
     const blockchainWallet = new this();
+    // Hardcoding address
     blockchainWallet.address = 'blockchain-wallet';
     return blockchainWallet;
   }

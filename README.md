@@ -55,16 +55,31 @@ $ npm run test
 ```
 
 ## API's available on this app
-> This app supports 6 API's currently
+> This app supports 6 API's currently: (3001 can be changed to any of the other node's HTTP server's port number)
 
-1. GET <a href="http://localhost:3000/blocks" target="_blank">/blocks</a>
+1. GET <a href="http://localhost:3001/blocks" target="_blank">/blocks</a>
+   - Fetch the blocks in the blockchain saved locally on the node whose HTTP server is running on port 3001
 
-2. GET <a href="http://localhost:3000/mine" target="_blank">/mine</a>
+2. POST <a href="http://localhost:3001/mine" target="_blank">/mine</a>
+   - Mines a new block containing the data field in the post request
+   - The block is then added to the blockchain locally
+   - The updated blockchain is broadcasted across the network so that other nodes can update their blockchains
 
-3. GET <a href="http://localhost:3000/transactions" target="_blank">/transactions</a>
+3. GET <a href="http://localhost:3001/transactions" target="_blank">/transactions</a>
+   - Fetch all transactions in the transactions pool saved locally in the node
+   - The transaction pool is the same and is saved across all nodes in the network
 
-4. GET <a href="http://localhost:3000/transact" target="_blank">/transact</a>
+4. GET <a href="http://localhost:3001/transact" target="_blank">/transact</a>
 
-5. GET <a href="http://localhost:3000/public-key" target="_blank">/public-key</a>
+5. GET <a href="http://localhost:3001/public-key" target="_blank">/public-key</a>
 
-6. GET <a href="http://localhost:3000/mine-transactions" target="_blank">/mine-transactions</a>
+6. GET <a href="http://localhost:3001/mine-transactions" target="_blank">/mine-transactions</a>
+   - Mines a new block containing all the transactions in the transaction pool shared across all nodes in the network
+   - The block is mined based on the **[proof of work](https://github.com/mayankamencherla/Blockchain#proof-of-work)** mechanism also used in Bitcoin.
+   - The block is then added to the blockchain locally
+   - The updated blockchain is broadcasted across the network so that other nodes can update their blockchains
+
+## Proof of work
+> The miner creats a new block using the proof of work mechanism outlined below
+
+1.

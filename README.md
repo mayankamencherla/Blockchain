@@ -88,4 +88,13 @@ $ npm run test
 ## Proof of work
 > The miner creats a new block using the proof of work mechanism outlined below
 
-1.
+1. When the miner decides to mine a new block, he does so with all the transactions in the transaction pool
+2. The intitial block is a genesis block, and a new block is mined based on the following parameters:
+    a. block of the last hash
+    b. nonce
+    c. hash of the current block
+    d. timestamp
+    e. difficulty
+3. The proof of work mechanism iteratively increases nonce and alters difficulty, until the number of leadings 0's in the block's hash are equal to the difficulty in the current iteration
+4. This is done to ensure that each block is added once every MINE_RATE of the blockchain
+5. The algorithm can be found in **[mine block](https://github.com/mayankamencherla/Blockchain/blob/master/blockchain/block.js#L38)**

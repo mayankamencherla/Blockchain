@@ -69,9 +69,15 @@ $ npm run test
    - Fetch all transactions in the transactions pool saved locally in the node
    - The transaction pool is the same and is saved across all nodes in the network
 
-4. GET <a href="http://localhost:3001/transact" target="_blank">/transact</a>
+4. POST <a href="http://localhost:3001/transact" target="_blank">/transact</a>
+   - Takes in recipient and amount as post parameters
+   - This endpoint is used to send amount to recipient from wallet at 3001
+   - Creates a new transaction and adds it to the transaction pool
+   - Wallet at 3001 has amount subtracted, and recipient wallet gets amount added to balance
 
 5. GET <a href="http://localhost:3001/public-key" target="_blank">/public-key</a>
+   - This endpoint is used to retrieve public key for the wallet at port 3001
+   - This public key must be used as recipient to send wallet at 3001 currency
 
 6. GET <a href="http://localhost:3001/mine-transactions" target="_blank">/mine-transactions</a>
    - Mines a new block containing all the transactions in the transaction pool shared across all nodes in the network

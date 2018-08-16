@@ -91,7 +91,7 @@ $ npm run test
 > The miner creats a new block using the proof of work mechanism outlined below
 
 1. When the miner decides to mine a new block, he does so with all the transactions in the transaction pool
-2. The intitial block is a genesis block, and a new block is mined based on the following parameters:
+2. The initial block is a genesis block, and a new block is mined based on the following parameters:
 ```
     a. block of the last hash
     b. nonce

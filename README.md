@@ -40,7 +40,7 @@ By default, the first node's HTTP server is hosted on port 3001, and the P2P ser
 ```bash
 $ HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
 ```
-This opens a new node, with an HTTP server hosted on port 3002, and the P2P server hosted on 5002, and it connects to the peers in the network (In this case, only 1 hosted on port 5002)
+This opens a new node, with an HTTP server hosted on port 3002, and the P2P server hosted on 5002, and it connects to the peers in the network (In this case, only 1 hosted on port 5001)
 
 5. To open the nth node on the network:
   a. Choose 2 open ports, 1 for the HTTP server, and 1 for the P2P server of the node
@@ -96,5 +96,5 @@ $ npm run test
     d. timestamp
     e. difficulty
 3. The proof of work mechanism iteratively increases nonce and alters difficulty, until the number of leadings 0's in the block's hash are equal to the difficulty in the current iteration
-4. This is done to ensure that each block is added once every MINE_RATE of the blockchain
+4. This is done to ensure that each block is added once every `MINE_RATE` of the blockchain
 5. The algorithm can be found in **[mine block](https://github.com/mayankamencherla/Blockchain/blob/master/blockchain/block.js#L38)**

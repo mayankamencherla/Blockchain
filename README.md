@@ -43,8 +43,10 @@ $ HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
 This opens a new node, with an HTTP server hosted on port 3002, and the P2P server hosted on 5002, and it connects to the peers in the network (In this case, only 1 hosted on port 5001)
 
 5. To open the nth node on the network:
+```
   a. Choose 2 open ports, 1 for the HTTP server, and 1 for the P2P server of the node
   b. PEERS = n-1 P2P servers that were created before this node in the form: ws://localhost:<port>, seperated by commas
+```
 ```bash
 $ HTTP_PORT=<HTTP PORT> P2P_PORT=<P2P PORT> PEERS=<ws://localhost:<PORT1>,ws://localhost:<PORT2>...> npm run dev
 ```
@@ -90,11 +92,13 @@ $ npm run test
 
 1. When the miner decides to mine a new block, he does so with all the transactions in the transaction pool
 2. The intitial block is a genesis block, and a new block is mined based on the following parameters:
+```
     a. block of the last hash
     b. nonce
     c. hash of the current block
     d. timestamp
     e. difficulty
+```
 3. The proof of work mechanism iteratively increases nonce and alters difficulty, until the number of leadings 0's in the block's hash are equal to the difficulty in the current iteration
 4. This is done to ensure that each block is added once every `MINE_RATE` of the blockchain
 5. The algorithm can be found in **[mine block](https://github.com/mayankamencherla/Blockchain/blob/master/blockchain/block.js#L38)**

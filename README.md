@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- [![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg)]() -->
 
+![alt text](https://github.com/mayankamencherla/Blockchain/blob/master/bitcoin.jpg)
+
 ## Downloading
 ```bash
 $ git clone https://github.com/mayankamencherla/Blockchain.git

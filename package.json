@@ -10,7 +10,7 @@
     "dev": "nodemon ./app"
   },
   "jest": {
-    "testEnvironment" : "node"
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",

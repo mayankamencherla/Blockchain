@@ -27,7 +27,7 @@ app.get('/blocks', (req, res) => {
 /**
  * Mine block containing data
  */
-app.post('/mine', (req, res) => {
+const mine = app.post('/mine', (req, res) => {
   const block = bc.addBlock(req.body.data);
   console.log(`New block added: ${block.toString()}`);
 
@@ -64,10 +64,12 @@ app.get('/mine-transactions', (req, res) => {
   res.redirect('/blocks');
 });
 
-app.get('/balance', (req, res) => {
-  const balance = wallet.calculateBalance(bc);
-  res.json({balance: balance});
-})
+
+  app.get('/balance', (req, res) => {
+    balance = wallet.calculateBalance(bc);
+    console.log(balance)
+    res.json({balance: balance});
+  })
 
 app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
 p2pServer.listen();

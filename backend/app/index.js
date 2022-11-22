@@ -51,7 +51,8 @@ app.post('/transact', (req, res) => {
 });
 
 app.get('/public-key', (req, res) => {
-  res.json({publicKey: wallet.publicKey});
+  res.json({"publicKey": [wallet.publicKey]});
+  console.log({"publicKey": [wallet.publicKey]});
 });
 
 /**
@@ -65,11 +66,11 @@ app.get('/mine-transactions', (req, res) => {
 });
 
 
-  app.get('/balance', (req, res) => {
+app.get('/balance', (req, res) => {
     balance = wallet.calculateBalance(bc);
     console.log(balance)
-    res.json({balance: balance});
-  })
+    res.json({"balance": [balance]});
+})
 
 app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
 p2pServer.listen();

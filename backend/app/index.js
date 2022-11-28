@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const Blockchain = require('../blockchain');
 const bodyParser = require('body-parser');
 const P2pServer = require('./p2p-server');
@@ -19,27 +20,36 @@ const wallet = new Wallet();
 const miner = new Miner(bc, tp, wallet, p2pServer);
 
 app.use(bodyParser.json());
+app.use(cors())
 
 app.get('/blocks', (req, res) => {
   res.json(bc.chain);
 });
 
-/**
- * Mine block containing data
- */
-const mine = app.post('/mine', (req, res) => {
-  const block = bc.addBlock(req.body.data);
-  console.log(`New block added: ${block.toString()}`);
+app.get('/transactions', (req, res) => {
+  res.json(tp.transactions);
+});
 
-  // Sync all chains - making a decentralized system
-  p2pServer.syncChains();
+app.get('/publicKey', (req, res) => {
+  res.json(wallet.publicKey);
+  console.log({"publicKey": [wallet.publicKey]});
+});
+
+/**
+ * Mine block containing transactions
+ */
+app.get('/mineTransactions', (req, res) => {
+  const block = miner.mine();
+  console.log(`New block added ${block.toString()}`);
 
   res.redirect('/blocks');
 });
 
-app.get('/transactions', (req, res) => {
-  res.json(tp.transactions);
-});
+app.get('/balance', (req, res) => {
+    balance = wallet.calculateBalance(bc);
+    res.json(balance);
+    console.log(balance);
+})
 
 app.post('/transact', (req, res) => {
   const {recipient, amount} = req.body;
@@ -50,27 +60,18 @@ app.post('/transact', (req, res) => {
   res.redirect('/transactions');
 });
 
-app.get('/public-key', (req, res) => {
-  res.json({"publicKey": [wallet.publicKey]});
-  console.log({"publicKey": [wallet.publicKey]});
-});
-
 /**
- * Mine block containing transactions
+ * Mine block containing data
  */
-app.get('/mine-transactions', (req, res) => {
-  const block = miner.mine();
-  console.log(`New block added ${block.toString()}`);
+app.post('/mine', (req, res) => {
+  const block = bc.addBlock(req.body.data);
+  console.log(`New block added: ${block.toString()}`);
+
+  // Sync all chains - making a decentralized system
+  p2pServer.syncChains();
 
   res.redirect('/blocks');
 });
-
-
-app.get('/balance', (req, res) => {
-    balance = wallet.calculateBalance(bc);
-    console.log(balance)
-    res.json({"balance": [balance]});
-})
 
 app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
 p2pServer.listen();

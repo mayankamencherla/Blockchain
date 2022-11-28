@@ -6,7 +6,7 @@
 <style>
 Body {
   font-family: Calibri, Helvetica, sans-serif;
-  background-color: #018037;
+  background-color: #808080;
 }
 a {
        background-color: #4CAF50;
@@ -22,8 +22,8 @@ a {
     }
  input[type=text], input[type=password] {
         width: 100%;
-        margin: 8px 0;
-        padding: 12px 20px;
+        margin: 2px 0;
+        padding: 5px 5px 5px 5px;
         display: inline-block;
         border: 2px solid green;
         box-sizing: border-box;
@@ -33,24 +33,31 @@ a {
     }
  .container {
         padding: 25px;
-        background-color: #04989E;
+        background-color: #FFFFFF;
     }
+.Logo{
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
 </style>
 </head>
+<center> <h1> Data Coin</h1> </center>
+
 <body>
-    <center> <h1> Data Coin</h1> </center>
-    <script src="../app/index.js"></script>
+
+
     <form>
         <div class="container">
+            <img src="DataCoinPfp.png" class = "Logo">
             <label>Username : </label>
             <input type="text" placeholder="Enter Username" name="username" required>
             <label>Password : </label>
             <input type="password" placeholder="Enter Password" name="password" required>
             <a href = "walletUI.html" class = "button">Login</a>
+
         </div>
     </form>
-    <button id="balance" onclick="getBalance()">updateBalance</button>
 </body>
 </html>
-
-module.exports.Block

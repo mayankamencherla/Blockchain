@@ -1,0 +1,33 @@
+/*
+  Style Sheet for Wallet Inteface
+  CSC 404 Final Project
+  Fall 2022
+*/
+
+/*
+    css for main account
+*/
+*{
+  margin: 0 0;
+  padding: 0 0;
+  font-family: Monaco, monospace, sans-serif;
+  background-color: #EED9BA;
+}
+
+.Account_Heading ul{
+  list-style-type: none;
+}
+
+.Account_Heading ul li{
+  display: inline;
+  padding: .5%;
+  font-weight: bold;
+}
+
+.button{
+  padding: 1%;
+  border-width: medium;
+  border-color: #633107;
+  font-size: 1rem;
+  border-radius: 10px;
+}

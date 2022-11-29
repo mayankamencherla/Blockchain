@@ -15,9 +15,10 @@ const tp = new TransactionPool();
 const p2pServer = new P2pServer(bc, tp);
 const wallet = new Wallet();
 
-// A miner consisting of the local blockchain, transaction pool,
-// currency wallet and the p2pServer
+// A miner consisting of the local blockchain, transaction pool, currency wallet and the p2pServer
 const miner = new Miner(bc, tp, wallet, p2pServer);
+const dbCoonect = require('../db/dbConnect');
+dbCoonect()
 
 app.use(bodyParser.json());
 app.use(cors())

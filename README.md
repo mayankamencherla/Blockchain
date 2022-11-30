@@ -5,7 +5,7 @@
 
 <!-- [![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg)]() -->
 
-![alt text](https://github.com/candilikoglu/datacoin2.0/blob/master/DATA PIRATES LOGO.png)
+![alt text](https://github.com/candilikoglu/datacoin2.0/blob/master/DATA%20PIRATES%20LOGO.png)
 
 ## Downloading
 

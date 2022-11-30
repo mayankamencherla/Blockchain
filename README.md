@@ -1,4 +1,4 @@
-# Cryptocurrency built on a distributed ledger
+# Data Coin | P2P Cryptocurrency Web App
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,7 +10,7 @@
 ## Downloading
 
 ```bash
-$ git clone https://github.com/mayankamencherla/Blockchain.git
+$ git clone https://github.com/candilikoglu/datacoin2.0.git
 ```
 
 > This app is a backend that mimics a peer to peer payment system (like Bitcoin), with a fully functional wallet, attached to the local miner, but with transactions and the blockchain synced across the distributed system of nodes
@@ -21,47 +21,33 @@ $ git clone https://github.com/mayankamencherla/Blockchain.git
 
 - **[NodeJS v9](https://nodejs.org/en/)**
 - **[npm](https://www.npmjs.com/)**
-- **[Bitcoin](https://bitcoin.org/bitcoin.pdf)**
 
 ## Setup Locally
 
 > To get the app working locally, or to run test cases, follow the instructions below.
-> After setting up the app, details on each API and how to use it can be found below in the **[API's available on this app](https://github.com/mayankamencherla/Blockchain#apis-available-on-this-app)** section.
+> After setting up the app, details on each API and how to use it can be found below in the **[API's available on this app](https://github.com/candilikoglu/datacoin2.0#apis-available-on-this-app)** section.
 > If any of the commands below are denied due to a permission error, please prepend a sudo to the command.
 
-1. Navigate to the app's root directory
+1. Open two terminals
 
-2. Run the following command to install all the dependencies:
+2. Navigate into backend
+
+3. Run npm install on both directories
 
 ```bash
 $ npm install
 ```
 
-3. Open the first node on the network:
+4. To start the node execute npm run dev in backend folders
 
 ```bash
 $ npm run dev
 ```
 
-By default, the first node's HTTP server is hosted on port 3001, and the P2P server is hosted on port 5001
-
-4. Open the second node on the network:
+5. To start the web application execute npm start in frontend folder
 
 ```bash
-$ HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
-```
-
-This opens a new node, with an HTTP server hosted on port 3002, and the P2P server hosted on 5002, and it connects to the peers in the network (In this case, only 1 hosted on port 5001)
-
-5. To open the nth node on the network:
-
-```
-  a. Choose 2 open ports, 1 for the HTTP server, and 1 for the P2P server of the node
-  b. PEERS = n-1 P2P servers that were created before this node in the form: ws://localhost:<port>, seperated by commas
-```
-
-```bash
-$ HTTP_PORT=<HTTP PORT> P2P_PORT=<P2P PORT> PEERS=<ws://localhost:<PORT1>,ws://localhost:<PORT2>...> npm run dev
+$ npm start
 ```
 
 ## Run test cases:
@@ -102,10 +88,17 @@ $ npm run test
    - This public key must be used as recipient to send wallet at 3001 currency
 
 6. GET <a href="http://localhost:3001/mine-transactions" target="_blank">/mine-transactions</a>
+
    - Mines a new block containing all the transactions in the transaction pool shared across all nodes in the network
    - The block is mined based on the **[proof of work](https://github.com/mayankamencherla/Blockchain#proof-of-work)** mechanism also used in Bitcoin.
    - The block is then added to the blockchain locally
    - The updated blockchain is broadcasted across the network so that other nodes can update their blockchains
+
+7. Post <a href="http://localhost:3001/login" target="_blank">/login</a>
+
+8. Post <a href="http://localhost:3001/register" target="_blank">/register</a>
+
+9. Post <a href="http://localhost:3001/balance" target="_blank">/balance</a>
 
 ## Proof of work
 
@@ -124,4 +117,4 @@ $ npm run test
 
 3. The proof of work mechanism iteratively increases nonce and alters difficulty, until the number of leadings 0's in the block's hash are equal to the difficulty in the current iteration
 4. This is done to ensure that each block is added once every `MINE_RATE` of the blockchain
-5. The algorithm can be found in **[mine block](https://github.com/mayankamencherla/Blockchain/blob/master/blockchain/block.js#L38)**
+5. The algorithm can be found in **[mine block](https://github.com/candilikoglu/datacoin2.0/blob/master/backend/blockchain/block.js#L38)**

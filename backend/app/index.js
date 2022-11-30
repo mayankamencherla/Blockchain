@@ -3,7 +3,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
-const nodeRSA = require('node-rsa');
 const ChainUtil = require('../chain-util');
 const Blockchain = require('../blockchain');
 const bodyParser = require('body-parser');
@@ -13,24 +12,33 @@ const TransactionPool = require('../wallet/transaction-pool');
 const Miner = require('./miner');
 const dbCoonect = require('../db/dbConnect');
 const User = require('../db/userModel');
-const { PBKDF2 } = require('crypto-js');
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
-
 const app = express();
 const bc = new Blockchain();
 const tp = new TransactionPool();
 const p2pServer = new P2pServer(bc, tp);
 const wallet = new Wallet();
-const key = new nodeRSA({b : 1024})
-
 // A miner consisting of the local blockchain, transaction pool, currency wallet and the p2pServer
 const miner = new Miner(bc, tp, wallet, p2pServer);
-dbCoonect()
 
 app.use(bodyParser.json());
 app.use(cors())
 
+dbCoonect()
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
+ 
 app.get('/blocks', (req, res) => {
   res.json(bc.chain);
 });

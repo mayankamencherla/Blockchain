@@ -1,31 +1,10 @@
-import React, {useEffect, useState}from 'react'
-
-
+import {Route, BrowserRouter} from "react-router-dom";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 function App() {
-    const [publicKeyData, setPublicKeyData] = useState("")
-    const [balanceData, setBalanceData] = useState("")
 
-    useEffect(() => {
-        fetch("http://localhost:3001/publicKey").then(response => response.json())
-        .then(data => {setPublicKeyData(data)})
-    }, [])
-    
-    useEffect(() => {
-        fetch("http://localhost:3001/balance").then(response => response.json())
-        .then(data => {setBalanceData(data)})
-    }, [])
-    
     return (
-    <div>
-        <div>
-            <p> Your datacoin balance is: {balanceData}</p>
-        </div>
-        <div>
-            <p> Your public key is: {publicKeyData}</p>
-        </div>
-    </div>
-
-    )
-}
+        <LoginScreen></LoginScreen>
+    )}
 
 export default App

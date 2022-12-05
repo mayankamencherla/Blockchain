@@ -44,7 +44,7 @@ app.get('/blocks', (req, res) => {
 });
 
 app.get('/transactions', (req, res) => {
-  res.json(tp.transactions);
+  res.json((tp.transactions).length);
 });
 
 app.get('/publicKey', (req, res) => {
@@ -64,8 +64,9 @@ app.get('/mineTransactions', (req, res) => {
 
 app.get('/balance', (req, res) => {
     balance = wallet.calculateBalance(bc);
-    res.json(balance);
-    console.log(balance);
+    res.json(wallet.calculateBalance(bc));
+    console.log(wallet.calculateBalance(bc));
+
 })
 
 app.post('/transact', (req, res) => {

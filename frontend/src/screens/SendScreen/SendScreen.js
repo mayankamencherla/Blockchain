@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from"./sendScreen.css"
+import { Link } from "react-router-dom";
+
 
 const SendScreen = () => {
     return (
@@ -15,7 +17,7 @@ const SendScreen = () => {
             <input type="text" placeholder="Enter Recipients's Adress" name="recipient" required/>
             <label>Amount : </label>
             <input type="text" placeholder="000.00" name="amount" required/>
-            <center><a href = "sendCoinsPage.html" class = "button">Send</a></center>
+            <center><Link to={"/"} class="button">Send Coins</Link></center>
         </div>
     </form>
       </div>

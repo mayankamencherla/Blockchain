@@ -1,21 +1,55 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styles from"./walletStyle.css"
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const WalletScreen = () => {
+  const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies([]);
+  useEffect(() => {
+    const verifyUser = async () => {
+      if (!cookies.jwt) {
+        navigate("/login");
+      } else {
+        const { data } = await axios.post(
+          "http://localhost:3001",
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        if (!data.status) {
+          removeCookie("jwt");
+          navigate("/login");
+        } else
+          toast(`Hi ${data.user} 🦄`, {
+            theme: "dark",
+          });
+      }
+    };
+    verifyUser();
+  }, [cookies, navigate, removeCookie]);
+
+  const logout = () => {
+    removeCookie("jwt");
+    navigate("/login");
+  };
+
     return (
       <div className={styles.Body}>
         <section class = "header">
           <img src="images/smallLogo.png" alt="Logo" class="image-cont image-shape" height="100" width="100" align="left"/>
+          <button onClick={logout} align="right">Logout</button>
           <center>  <h3> Data Pirates CryptoCurrency </h3> </center>
           <div class="container2">
             <center> <h1> Account Overview </h1> </center>
-            <Link to={"/SendScreen"} class="button">Send Coins</Link>
+            <Link to={"/SendScreen"} class="button">Send Coins</Link> 
             <Link to={"/RecieveScreen"} class="button">Recieve Coins</Link>
             <Link to={"/TransactionScreen"} class="button">View Transactions</Link>
             <Link to={"/PurchaseScreen"} class="button">Purchase Data Coin</Link>
-
          </div>
     </section>
    

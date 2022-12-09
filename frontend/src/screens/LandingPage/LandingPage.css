@@ -3,43 +3,6 @@ Body {
     background-color: #018037;
 }
 
-.link {
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
-    border: 6px solid rgb(253, 253, 253);
-    border-radius: 50%;
-    background: rgba(0,0,0,0.3);
-    color: white;
-    width: 256px;
-    height: 256px;
-    transition: transform 2s;
-    position: relative;
-  }
-  .link:after,
-  .link:before{
-    position: absolute;
-    content: "";
-    display: block;
-    z-index: 1;
-  }
-  .link:after{
-    top: 20px;
-    bottom: 20px;
-    left: 24px;
-    right: 24px;
-  }
-  .link:before{
-    top: 24px;
-    bottom: 24px;
-    left: 20px;
-    right: 20px;
-  }
-  
-  .link:hover {
-    transform: rotate(360deg);
-  }
-
 .centered {
     position: fixed;
     top: 40%;

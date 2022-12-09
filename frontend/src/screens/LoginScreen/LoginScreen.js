@@ -64,6 +64,7 @@ const LoginScreen = () => {
               onChange={(e) => setPassphrase(e.target.value)}
             required/>
             <button style = {{color: "#04989E", padding: 5, margin: 10}} type = "submit" >Login</button>
+            <Link to="/register">Register</Link>
         </div>
     </form>
     <ToastContainer/>

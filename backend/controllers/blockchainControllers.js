@@ -35,3 +35,33 @@ module.exports.mine = (req, res) => {
     res.redirect('/blocks');
 };
   
+module.exports.transactions =  (req, res) => {
+    const output = tp.transactions.getOutput();
+    const amount = output.amount;
+    console.log(amount);
+    res.json(tp.transactions);
+};
+
+module.exports.transact = (req, res) => {
+    const {recipient, amount} = req.body;
+    const transaction = wallet.createTransaction(recipient, amount, bc, tp);
+
+    p2pServer.broadcastTransaction(transaction);
+
+    res.redirect('/transactions');
+};
+
+module.exports.blocks = (req, res) => {
+    res.json(bc.chain);
+};
+
+module.exports.publicKey =  (req, res) => {
+    res.json(wallet.publicKey);
+    console.log({"publicKey": [wallet.publicKey]});
+};
+  
+module.exports.balance = (req, res) => {
+    balance = wallet.calculateBalance(bc);
+    res.json(balance);
+    console.log(balance);
+}; 

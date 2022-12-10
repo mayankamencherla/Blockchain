@@ -36,7 +36,7 @@ module.exports.mine = (req, res) => {
 };
   
 module.exports.transactions =  (req, res) => {
-    res.json(tp.transactions);;
+    res.json(tp.transactionList);
 };
 
 module.exports.transact = (req, res) => {

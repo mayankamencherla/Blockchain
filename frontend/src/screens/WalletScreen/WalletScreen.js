@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from"./walletStyle.css"
 import { Link,  useNavigate } from "react-router-dom";
-import { useCopyToClipboard } from 'usehooks-ts'
 import axios from 'axios'
 import { useCookies } from "react-cookie";
 

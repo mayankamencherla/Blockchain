@@ -5,6 +5,7 @@ import WalletScreen from "./screens/WalletScreen/WalletScreen";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import MineScreen from "./screens/MineScreen/MineScreen";
 import SendScreen from "./screens/SendScreen/SendScreen";
+import TransactionScreen from "./screens/TransactionScreen/TransactionScreen";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/login" element={<LoginScreen />} />
         <Route exact path="/mine" element={<MineScreen />} />
         <Route exact path="/SendScreen" element={<SendScreen />} />
+        <Route exact path="/TransactionScreen" element={<TransactionScreen />} />
       </Routes>
     </BrowserRouter>
     )}

@@ -1,37 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link,  useNavigate } from "react-router-dom";
+import axios from 'axios'
 import styles from"./transactions.css"
 
 const TransactionScreen = () => {
+
+  const [transactionList, setTransactionList] = useState([])
+
+  const fetchData = () => {
+    axios.get("http://localhost:3001/transactions").then((response) => {
+      const list = response.data[0].outputs.slice(1).map((output) =>
+                <ul key={output.id} className="plan-features">
+                  <li key={output.address}> Recipient: {output.address} </li>
+                  <li key={output.amount}> Amount {output.amount} </li>
+                  <li>Timestamp: {response.data[0].input.timestamp}</li>
+                </ul>)  
+      setTransactionList(list)
+      console.log(response.data);
+    }); 
+  }
+  
+  useEffect(() => {  
+    fetchData();
+  }, []);
+
     return (
       <div className={styles.Body}>
-        <img src="images/smallLogo.png" alt="Logo" class="image-cont image-shape" height="100" width="100" align="left"/>
+        <img src="images/smallLogo.png" alt="Logo" className="image-cont image-shape" height="100" width="100" align="left"/>
     <center>  <h3> Data Pirates CryptoCurrency </h3> </center>
     <center> <h1> Transaction History </h1> </center>
-    <form>
-        <div class="container">
-            <label>Senders Adress : </label>
-            <input type="text" placeholder="Sender's Adress" name="sender" readonly/>
-            <label>Recipient Adress : </label>
-            <input type="text" placeholder="Recipients's Adress" name="recipient" readonly/>
-            <label>Amount : </label>
-            <input type="text" placeholder="000.00" name="amount" readonly/>
-            <label>Date : </label>
-            <input type="text" placeholder="DD/MM/YYYY" name="date" readonly/>
-        </div>
-    </form>
-    <form>
-        <div class="container">
-            <label>Senders Adress : </label>
-            <input type="text" placeholder="Sender's Adress" name="sender" readonly/>
-            <label>Recipient Adress : </label>
-            <input type="text" placeholder="Recipients's Adress" name="recipient" readonly/>
-            <label>Amount : </label>
-            <input type="text" placeholder="000.00" name="amount" readonly/>
-            <label>Date : </label>
-            <input type="text" placeholder="DD/MM/YYYY" name="date" readonly/>
-        </div>
-    </form>
-    <center><a href = "walletUI.html" class = "button">Return to HomePage</a></center>
+    <div>{transactionList}</div>
+    <center><Link to={"/wallet"} class="button">Go back to Home Page</Link></center>
       </div>
     )
   }

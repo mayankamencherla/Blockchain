@@ -36,10 +36,7 @@ module.exports.mine = (req, res) => {
 };
   
 module.exports.transactions =  (req, res) => {
-    const output = tp.transactions.getOutput();
-    const amount = output.amount;
-    console.log(amount);
-    res.json(tp.transactions);
+    res.json(tp.transactions);;
 };
 
 module.exports.transact = (req, res) => {

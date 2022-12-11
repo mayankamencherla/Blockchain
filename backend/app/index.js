@@ -1,47 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const jwt = require("jsonwebtoken");
-const ChainUtil = require('../chain-util');
-const Blockchain = require('../blockchain');
 const bodyParser = require('body-parser');
-const P2pServer = require('./p2p-server');
-const Wallet = require('../wallet');
-const TransactionPool = require('../wallet/transaction-pool');
-const Miner = require('./miner');
 const dbCoonect = require('../db/dbConnect');
-const User = require('../db/userModel');
-
+const cookieParser = require("cookie-parser");
+const routes = require("../routers/routers");
+const { listen } = require("../controllers/blockchainControllers")
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 const app = express();
-const bc = new Blockchain();
-const tp = new TransactionPool();
-const p2pServer = new P2pServer(bc, tp);
-const wallet = new Wallet();
-// A miner consisting of the local blockchain, transaction pool, currency wallet and the p2pServer
-const miner = new Miner(bc, tp, wallet, p2pServer);
-
-app.use(bodyParser.json());
-app.use(cors())
 
 dbCoonect()
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-  );
-  next();
-});
- 
-app.get('/blocks', (req, res) => {
-  res.json(bc.chain);
-});
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 app.get('/transactions', (req, res) => {
   res.json((tp.transactions).length);
@@ -190,8 +164,7 @@ app.post("/register", (request, response) => {
     });
 });
 
+listen()
 //mongoose.connection.once('open', () => {
   app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
-  p2pServer.listen();
 //})
-

@@ -15,21 +15,26 @@ const WalletScreen = () => {
 
   const [balance, setBalance] = useState(0);
   const [publicKey, setPublicKey] = useState("");
+  const [transactions, setTransactionList] = useState([]);
 
   const fetchData = () => {
     const balanceAPI = "http://localhost:3001/balance";
     const keyAPI = "http://localhost:3001/publicKey";
+    const transactionAPI = "http://localhost:3001/transactions";
 
     const getBalance = axios.get(balanceAPI);
     const getKey = axios.get(keyAPI);
+    const getTransactions = axios.get(transactionAPI);
 
-    axios.all([getBalance, getKey]).then(
+    axios.all([getBalance, getKey, getTransactions]).then(
       axios.spread((...allData) => {
         const balance = allData[0].data
         const key = allData[1].data
+        const t = allData[2].data
         
         setBalance(balance)
         setPublicKey(key)
+        setTransactionList(t)
       })
     ) 
   }
@@ -64,7 +69,7 @@ const WalletScreen = () => {
               </div>
               <div class="column">
                 <center><h2><u>Number of Transactions</u></h2></center>
-                <center><h2>10</h2></center>
+                <center><h2>{transactions.length}</h2></center>
               </div>
             </div>
             <button onClick={() => window.location.reload(false)}>Refresh</button>

@@ -9,7 +9,7 @@ const TransactionScreen = () => {
 
   const fetchData = () => {
     axios.get("http://localhost:3001/transactions").then((response) => {
-      const list = response.data[0].outputs.slice(1).map((output) =>
+      const list = response.data[0].outputs.map((output) =>
                 <ul key={output.id} className="plan-features">
                   <li key={output.address}> Recipient: {output.address} </li>
                   <li key={output.amount}> Amount {output.amount} </li>

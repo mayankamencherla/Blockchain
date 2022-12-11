@@ -5,6 +5,7 @@ const Wallet = require('../wallet');
 const TransactionPool = require('../wallet/transaction-pool');
 const Miner = require('../app/miner');
 
+
 const bc = new Blockchain();
 const tp = new TransactionPool();
 const p2pServer = new P2pServer(bc, tp);
@@ -62,3 +63,7 @@ module.exports.balance = (req, res) => {
     res.json(balance);
     console.log(balance);
 }; 
+
+module.exports.listen = (req, res) => {
+    p2pServer.listen();
+}

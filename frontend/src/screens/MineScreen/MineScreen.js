@@ -1,73 +1,70 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { ToastContainer, toast} from 'react-toastify';
+import axios from 'axios'
 import styles from "./MineScreen.css"
 const MineScreen = () => {
+    const [blocks, setBlocks] = useState([])
+
+  const fetchData = () => {
+    axios.get("http://localhost:3001/blocks").then((response) => {
+      const list = response.data.map((block, index) =>
+            <div class="plan-card plan-one">
+            <div class="pricing-header">
+                <div key={index}class="plan-save">Block: {index}</div>
+            </div>
+            <ul class="plan-features">
+                <li>Timestamp: {block.timestamp}</li>
+                <li>Hash: {block.hash}</li>
+                <li>Last Hash: {block.lastHash}</li>
+                <li>Difficulty: {block.difficulty}</li>
+                <li>nonce: {block.nonce}</li>
+            </ul>
+            </div>)  
+      setBlocks(list)
+      console.log(response.data);
+    }); 
+  };
+
+  const mineBlock = async () => {
+    console.log("function is called")
+    await axios.get("http://localhost:3001/mine").then((response) => {
+        showToastMessage(1)
+    })
+    .catch((error) => {showToastMessage(false)})
+    setTimeout(function(){ 
+        window.location.reload(false)
+    }, 2000); 
+  };
+
+  const showToastMessage = (res) => {
+        if (res === 0) {
+            toast.error('There is no mine to block!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        } else if (res === 1) {
+            toast.success('Blocked mined successfully', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        } else if (res === 2) {
+            toast.error('Error mining block', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
+  
+  useEffect(() => {  
+    fetchData();
+  }, []);
+
   return (
     <div className={styles.Body}>
-        <div class="container content">
-        <div class="row gutters">
+        <div><h1>Mine Blocks</h1></div>
+        <div><button onClick = {mineBlock}>Mine</button></div>
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="plan-card plan-one">
-                    <div class="pricing-header">
-                        <h4 class="plan-title">Basic</h4>
-                        <div class="plan-cost">$129.00</div>
-                        <div class="plan-save">Save $29.00</div>
-                    </div>
-                    <ul class="plan-features">
-                        <li>5GB Linux Web Space</li>
-                        <li>5 MySQL Databases</li>
-                        <li>500 Emails</li>
-                        <li>250Gb mothly Transfer</li>
-                        <li class="text-muted"><del>24/7 Tech Support</del></li>
-                        <li class="text-muted"><del>Daily Backups</del></li>
-                    </ul>
-                    <div class="plan-footer">
-                        <a href="#" class="btn btn-info btn-lg btn-rounded">Select Plan</a>
-                    </div>
-                </div>
+                {blocks}
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="plan-card plan-one">
-                    <div class="pricing-header orange">
-                        <h4 class="plan-title">Standard</h4>
-                        <div class="plan-cost">$189.00</div>
-                        <div class="plan-save">Save $49.00</div>
-                    </div>
-                    <ul class="plan-features">
-                        <li>10GB Linux Web Space</li>
-                        <li>10 MySQL Databases</li>
-                        <li>1000 Emails</li>
-                        <li>750Gb mothly Transfer</li>
-                        <li>24/7 Tech Support</li>
-                        <li class="text-muted"><del>Daily Backups</del></li>
-                    </ul>
-                    <div class="plan-footer">
-                        <a href="#" class="btn btn-danger btn-lg btn-rounded">Select Plan</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="plan-card plan-one">
-                    <div class="pricing-header green">
-                        <h4 class="plan-title">Premium</h4>
-                        <div class="plan-cost">$219.00</div>
-                        <div class="plan-save">Save $99.00</div>
-                    </div>
-                    <ul class="plan-features">
-                        <li>50GB Linux Web Space</li>
-                        <li>100 MySQL Databases</li>
-                        <li>Unlimited Emails</li>
-                        <li>1000Gb mothly Transfer</li>
-                        <li>24/7 Tech Support</li>
-                        <li>Daily Backups</li>
-                    </ul>
-                    <div class="plan-footer">
-                        <a href="#" class="btn btn-info btn-lg btn-rounded">Select Plan</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
+        <ToastContainer/>
+    </div>
   )
 }
 

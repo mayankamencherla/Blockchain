@@ -1,4 +1,4 @@
-import React, {useEffect, useState}, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from"./walletStyle.css"
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios'
@@ -77,9 +77,7 @@ const WalletScreen = () => {
             <button onClick={() => { navigator.clipboard.writeText(publicKey)}}>copyKey</button>
           </div>
     </section>
-    <div>
-            <p> Your public key is: {publicKeyData}</p>
-        </div>
+    
       </div>
     )
   }

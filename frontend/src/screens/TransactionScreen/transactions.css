@@ -16,26 +16,49 @@ Body {
       font-size: 4rem;
       margin: 2%;
     }
-   form {
-          border: 3px solid #f1f1f1;
-          background-color: #04989E;
-          border-radius: 8px;
-          margin: 2%;
-      }
-   input[type=text]{
-          width: 100%;
-          margin: 10px 0px;
-          padding: 12px 25px;
-          display: inline-block;
-          border: 2px solid green;
-          box-sizing: border-box;
-          background-color: #C0C0C0;
-      }
+
+    h4{
+      text-align: left;
+      font-size: 1.5rem;
+      margin-bottom: .8%;
+      
+    }
+
+    h5{
+      text-align: left;
+      font-size: 1.5rem;
+      margin-bottom: .8%;
+      line-height: .001%;
+    }
+   
    a:hover {
           opacity: 0.7;
       }
+
+    ul{
+      text-align: left;
+      background-color: #04989E;
+      border: 3px solid #f1f1f1;
+      border-radius: 8px;
+      list-style: none;
+      padding-bottom: 15px;
+    }
+    ul li{
+      background-color: #FFFFFF;
+      color: #000000;
+      font-size: 1.3rem;
+      border-radius: 5px;
+      border: 3px solid #018037;
+      overflow-wrap: break-word;
+      margin-top: 1%;
+      margin-right: 1%;
+      padding-right: 15px;
+      padding-left: 15px;
+      height: 135px;
+
+    }
+  
    .container {
-          padding: 25px;
           background-color: #04989E;
           height: 300px;
       }
@@ -51,12 +74,13 @@ Body {
         text-decoration: none;
       }
       .button:hover{
-        background-color:#018037;
+        background-color:#FFFFFF;
         text-decoration-color: #FFFFFF;
         cursor: pointer;
       }
-      .image-cont{
-        width : 100%;
+      .imageCont{
+        width : 30%;
+        border-radius: 20px;
       }
       .image-shape{
         border-radius: 20px;
@@ -66,3 +90,5 @@ Body {
         font-size: 1rem;
         margin: 2%;
       }
+
+      

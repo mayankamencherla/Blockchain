@@ -4,6 +4,8 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import './LandingPage.css'
+import companyLogo from './officialLogo.png';
+
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -30,14 +32,14 @@ const LandingPage = () => {
     }, [cookies, navigate, removeCookie]);
     return (
     <div>
+               <img src={companyLogo} alt="Logo" width="200px" align="left"/> 
         <h1 className="centered2">DataCoin</h1>
-        <div className="centered">
-            <Link to={"/mine"} class="button">Mine</Link>
-            <div class="divider"/>
             <div>
-                <Link to={"/wallet"} class="button">Wallet</Link>
-            </div>
+                <Link to={"/wallet"} class="button2">Wallet</Link>
         </div>
+                            <div>
+            <Link to={"/mine"} class="button1">Mine</Link>
+                    </div>
     </div>
   )
 }

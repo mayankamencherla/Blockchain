@@ -1,9 +1,9 @@
 Body {
-    font-family: Calibri, Helvetica, sans-serif;
-    background-color: #018037;
+    font-family: Monaco, Helvetica, sans-serif;
+    background-color: #F7F9F6;
   }
   a {
-         background-color: #4CAF50;
+         background-color: #ADEEA2;
          width: 100%;
          color: #000000;
          padding: 5px;
@@ -12,67 +12,77 @@ Body {
          cursor: pointer;
   }
   h1{
-    color: #FFFFFF;
+    font-family: "Monaco", Times, serif;
+    color: #ADEEA2;
     font-size: 4rem;
     margin: 2%;
   }
   .container2 a{
-         display: inline-block;
-         width: 17%;
-         margin: 2%;
+    display: inline-block;
+    width: 27%;
+    margin: 2%;
+    align-items: center;
+    
   }
   
 .container2 {
-    background-color: #018037;
+    background-color: #F7F9F6;
+    height: 200px;
 }
+
   .button{
+    background-color: #4CAF50;
     padding: 1.7%;
-    border-width: medium;
-    border-color: #009999;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     border-radius: 5px;
-    background-color: #FFFFFF;
     text-align: center;
     text-decoration: none;
+    color: #585858;
+    font-family: "Monaco", Times, serif;
   }
   .button:hover{
-    background-color: #009999;
+    background-color: #F7F9F6;
     text-decoration-color: #FFFFFF;
     cursor: pointer;
   }
   .secbutton{
     padding: 1.7%;
-    margin: 17%;
-    border-width: medium;
-    border-color: #009999;
-    font-size: 1.3rem;
+    margin-top: 150px;
+    margin-left: 300px;
+    margin-right: 85px;
     border-radius: 5px;
-    background-color: #018037;
+    font-size: 1.3rem;
+    background-color: #ADEEA2 !important;
+    border: #585858;
+    color: #585858;
     text-align: center;
     text-decoration: none;
+    font-family: "Monaco", Times, serif;
   }
   .secbutton:hover{
-    background-color: #009999;
+    background-color: #F7F9F6;
     text-decoration-color: #FFFFFF;
     cursor: pointer;
   }
   h2{
-    color: #000000;
+    color: #585858;
     font-size: 2rem;
     margin: 2%;
+    font-family: "Monaco", Times, serif;
   }
   h3{
-    color: #FFFFFF;
+    color: #ADEEA2 !important;
     font-size: 1rem;
     margin: 2%;
+    font-family: "Monaco", Times, serif;
   }
   .mainPage{
     width: 100%;
     margin: 0%;
     height: 450px;
-    border: 7px solid #04989E;
+    border: 7px solid #ADEEA2;
     padding: 25px;
-    background-color: #f1f1f1;
+    background-color: #F7F9F6;
     border-radius: 10px;
   }
   .column {

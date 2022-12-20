@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 import styles from"./sendScreen.css"
+import { Link } from "react-router-dom";
+import companyLogo from './images/officialLogo.png';
+
+
 
 const SendScreen = () => {
   const [recipient, setRecipient] = useState("");
@@ -35,9 +39,9 @@ const SendScreen = () => {
 
     return (    
       <div className={styles.Body}>
-        <img src="images/smallLogo.png" alt="Logo" class="image-cont image-shape" height="100" width="100" align="left"/>
+        <img src={companyLogo} alt="Logo" className={styles.imageCont} width="200px" align="center"/> 
         <center>  <h3> Data Pirates CryptoCurrency </h3> </center>
-        <center> <h1> Send Data Coins</h1> </center>
+        <center> <h1> Send DataCoins</h1> </center>
         <form onSubmit={(e) => handleSubmit(e)}>
 
         <div class="container">
@@ -57,7 +61,7 @@ const SendScreen = () => {
               onChange={(e) => setAmount(e.target.value)}
               required/>
             
-            <button style = {{color: "#04989E", padding: 5, margin: 10}} type = "submit" >Send</button>
+            <button className="button" type = "submit" >Send</button>
         </div>
     </form>
       </div>

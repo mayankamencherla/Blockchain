@@ -1,6 +1,6 @@
 Body {
     font-family: Calibri, Helvetica, sans-serif;
-    background-color: #018037;
+    background-color: #F7F9F6 !important;
 }
 
 .centered {
@@ -17,10 +17,43 @@ Body {
     left: 47.5%;
     margin-top: -50px;
     margin-left: -100px;
+    color: #ADEEA2;
   }
 
+
 .divider{
-    width:50px;
+    width:500px;
     height:auto;
     display:inline-block;
+}
+
+.a {
+  width: 50px;
+  height: auto;
+  display: inline-block;
+}
+
+.button1 {
+    border-radius: 10px;
+      background-color: #ADEEA2;
+      position: absolute;
+  width: 100px !important;
+  padding: 30px !important;
+    left: 40.5%;
+    right: 50px;
+                text-align: center;
+    text-decoration: none;
+    top: 100px
+}
+
+.button2 {
+  border-radius: 10px;
+        background-color: #ADEEA2;
+        position: absolute;
+  width: 100px !important;
+  padding: 30px !important;
+    left: 18%;
+                    text-align: center;
+        text-decoration: none;
+      top: 100px
 }

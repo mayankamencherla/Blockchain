@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from"./walletStyle.css"
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useCookies } from "react-cookie";
+import companyLogo from './images/officialLogo.png';
+import walletIcon from './images/walletIcon2.png';
+import transactionIcon from './images/transaction.png';
+
+
 
 const WalletScreen = () => {
   const navigate = useNavigate();
@@ -44,38 +49,37 @@ const WalletScreen = () => {
   }, []);
 
     return (
-      <div className={styles.Body}>
-        <section class = "header">
-          <img src="images/smallLogo.png" alt="Logo" class="image-cont image-shape" height="100" width="100" align="left"/>
-          <button onClick={logout} align="right">Logout</button>
+      <div >
+        <section>
+        <img src={companyLogo} alt="Logo" className={styles.imageCont} width="200px" align="center"/> 
           <center>  <h3> Data Pirates CryptoCurrency </h3> </center>
           <div class="container2">
-            <center> <h1> Account Overview </h1> </center>
+            <center> <h1><b> Account Overview </b> </h1> </center>
             <Link to={"/SendScreen"} class="button">Send Coins</Link> 
-            <Link to={"/RecieveScreen"} class="button">Recieve Coins</Link>
             <Link to={"/TransactionScreen"} class="button">View Transactions</Link>
-            <Link to={"/PurchaseScreen"} class="button">Purchase Data Coin</Link>
+            <button onClick={logout} className="button">Logout</button>
          </div>
     </section>
    
     <section class = "main_Wallet">
         <div class="mainPage">
+          <div className="column">
+          <center><img src={walletIcon} alt="Logo" className={styles.imageCont} width="200px"/> </center>
           <center> <h2> <u>  Account Balance  </u> </h2> </center>
           <center> <h2> {balance} </h2> </center>
+          </div>
             <div class="row">
               <div class="column">
-                <center> <h2> <u> Unconfirmed Balance </u> </h2> </center>
-                <center><h2>0</h2></center>
-              </div>
-              <div class="column">
+              <center><img src={transactionIcon} alt="Logo" className={styles.imageCont} width="200px"/> </center>
                 <center><h2><u>Number of Transactions</u></h2></center>
                 <center><h2>{transactions.length}</h2></center>
               </div>
             </div>
-            <button onClick={() => window.location.reload(false)}>Refresh</button>
-            <button onClick={() => { navigator.clipboard.writeText(publicKey)}}>copyKey</button>
+            <button onClick={() => window.location.reload(false)} class="secbutton">Refresh</button>
+            <button onClick={() => { navigator.clipboard.writeText(publicKey)}} class="secbutton">copyKey</button>
           </div>
     </section>
+    
       </div>
     )
   }

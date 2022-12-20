@@ -1,12 +1,12 @@
 Body {
     font-family: Calibri, Helvetica, sans-serif;
-    background-color: #018037;
+    background-color: #ADEEA2;
 }
 
 a {
-    background-color: #4CAF50;
+    background-color: #ADEEA2;
     width: 100%;
-    color: #04989E;
+    color: #ADEEA2;
     padding: 5px;
     margin: 220px;
     border: none;
@@ -32,5 +32,5 @@ a:hover {
    
 .container {
     padding: 25px;
-    background-color: #04989E;
+    background-color: #ADEEA2;
 }

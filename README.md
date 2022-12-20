@@ -5,7 +5,7 @@
 
 <!-- [![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg)]() -->
 
-![alt text](https://github.com/candilikoglu/datacoin2.0/blob/master/DATA%20PIRATES%20LOGO.png)
+![alt text](officialLogo.png)
 
 ## Downloading
 
@@ -21,6 +21,7 @@ $ git clone https://github.com/candilikoglu/datacoin2.0.git
 
 - **[NodeJS v9](https://nodejs.org/en/)**
 - **[npm](https://www.npmjs.com/)**
+- **[ngrok](https://ngrok.com)**
 
 ## Setup Locally
 
@@ -49,6 +50,38 @@ $ npm run dev
 ```bash
 $ npm start
 ```
+
+## Publish your node publicly 
+> To get the app working publicly, follow the instructions below.
+> If any of the commands below are denied due to a permission error, please prepend a sudo to the command.
+
+### On computer 1
+1. Download ngrok softtware by following the guide on the website.
+
+2. Sign up on ngrok and get an authentication token
+
+3. First in your terminal, run
+      ```bash
+         $ ngrok config add-authtoken <yourAuthToken>
+      ```
+4. After run the following command:
+      ``` bash
+         $ ngrok tcp <desired_port_listen_for>
+      ```
+5. Execute commands ```npm run dev``` & ```npm start```. It will run on ports 3001 and 5001 by default.
+
+### On other computers that want to join the network
+1. ngrok will give you a tcp address to computer 1. Use the tcp address to replace the ```PEERS``` address before starting the program.
+   Following is the example 
+
+2. An example is:
+   * set HTTP_PORT=<HTTP_PORT> && set P2P_PORT=<P2P_PORT> && set PEERS=ws://localhost:5001 && npm run dev
+
+   will become:
+
+   * set HTTP_PORT=<HTTP_PORT> && set P2P_PORT=<P2P_PORT> && set PEERS=ws://<tcp_address> && npm run dev
+
+   ex: set HTTP_PORT= 3002 && set P2P_PORT= 5002  && set PEERS=ws://6.tcp.ngrok.io:14732 && npm run dev
 
 ## Run test cases:
 

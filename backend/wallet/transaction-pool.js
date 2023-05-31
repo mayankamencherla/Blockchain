@@ -3,6 +3,7 @@ const Transaction = require('./transaction');
 class TransactionPool {
   constructor() {
     this.transactions = [];
+    this.transactionList = [];
   }
 
   updateOrAddTransaction(transaction) {
@@ -15,10 +16,13 @@ class TransactionPool {
     if (index === -1) {
       // Transaction added to pool
       this.transactions.push(transaction);
+      this.transactionList.push(transaction);
     } else {
       // Transaction exists in pool, so update
       this.transactions[index] = transaction;
+      this.transactionList[index] = transaction;
     }
+    console.log("update transaction " + this.transactionList.length);
   }
 
   existingTransaction(address) {

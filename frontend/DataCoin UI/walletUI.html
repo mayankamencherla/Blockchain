@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <script src="../app/index.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>Client Account Page</title>
+    <link rel="stylesheet" href="css/walletStyleSheet.css">
+    <style>
+    Body {
+      font-family: Calibri, Helvetica, sans-serif;
+      background-color: #018037;
+    }
+    a {
+           background-color: #4CAF50;
+           width: 100%;
+           color: #000000;
+           padding: 5px;
+           margin: 220px;
+           border: none;
+           cursor: pointer;
+    }
+    h1{
+      color: #FFFFFF;
+      font-size: 4rem;
+      margin: 2%;
+    }
+    .container a{
+           display: inline-block;
+           width: 17%;
+           float: center;
+           margin: 2%;
+    }
+    .button{
+      padding: 1.7%;
+      border-width: medium;
+      border-color: #009999;
+      font-size: 1.3rem;
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+    }
+    .button:hover{
+      background-color: #009999;
+      text-decoration-color: #FFFFFF;
+      cursor: pointer;
+    }
+    .secbutton{
+      padding: 1.7%;
+      margin: 17%;
+      border-width: medium;
+      border-color: #009999;
+      font-size: 1.3rem;
+      border-radius: 5px;
+      background-color: #018037;
+      text-align: center;
+      text-decoration: none;
+    }
+    .secbutton:hover{
+      background-color: #009999;
+      text-decoration-color: #FFFFFF;
+      cursor: pointer;
+    }
+    h2{
+      color: #000000;
+      font-size: 2rem;
+      margin: 2%;
+    }
+    h3{
+      color: #FFFFFF;
+      font-size: 1rem;
+      margin: 2%;
+    }
+    .mainPage{
+      width: 100%;
+      margin: 0%;
+      height: 450px;
+      border: 7px solid #04989E;
+      padding: 25px;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+    }
+    .column {
+      float: right;
+      width: 45%;
+      padding: 20px;
+      margin: .7%;
+      height: 175px;
+    }
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  .image-cont{
+    width = 100%;
+  }
+  .image-shape{
+    border-radius: 10px;
+  }
+    </style>
+  </head>
+  <body>
+    <!-- Header section starts here -->
+    <section class = "header">
+    <img src="images/smallLogo.png" alt="Logo" class="image-cont image-shape" height="100" width="100" align="left"/>
+    <center>  <h3> Data Pirates CryptoCurrency </h3> </center>
+        <div class="container">
+          <center> <h1> Account Overview </h1> </center>
+          <a href="sendCoinsPage.html" class="button">Send Coins</a>
+          <a href="recievedCoinsPage.html" class="button">Recieve Coins</a>
+          <a href="transactionsPage.html" class="button">View Transactions</a>
+          <a href="buyCoinsPage.html" class="button">Purchase DataCoins</a>
+        </div>
+    </section>
+    <!-- Header section ends here -->
+
+    <!-- Main section starts here -->
+    <section class = "main_Wallet">
+        <div class="mainPage">
+          <center> <h2> <u>  Account Balance  </u> </h2> </center>
+          <center> <h2> $2,000 </h2> </center>
+            <div class="row">
+              <div class="column">
+                <center> <h2> <u> Unconfirmed Balance </u> </h2> </center>
+                <center><h2>$186</h2></center>
+              </div>
+              <div class="column">
+                <center><h2><u>Number of Transactions</u></h2></center>
+                <center><h2>10</h2></center>
+              </div>
+            </div>
+            <a href="walletUI.html" class="secbutton">Refresh</a>
+            <a href="walletUI.html" class="secbutton">Copy Key</a>
+          </div>
+    </section>
+    <!-- Main section ends here -->
+  </body>
+  <h1 onload="getBalance"></h1>
+</html>

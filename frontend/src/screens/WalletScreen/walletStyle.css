@@ -1,0 +1,105 @@
+Body {
+    font-family: Monaco, Helvetica, sans-serif;
+    background-color: #F7F9F6;
+  }
+  a {
+         background-color: #ADEEA2;
+         width: 100%;
+         color: #000000;
+         padding: 5px;
+         margin: 220px;
+         border: none;
+         cursor: pointer;
+  }
+  h1{
+    font-family: "Monaco", Times, serif;
+    color: #ADEEA2;
+    font-size: 4rem;
+    margin: 2%;
+  }
+  .container2 a{
+    display: inline-block;
+    width: 27%;
+    margin: 2%;
+    align-items: center;
+    
+  }
+  
+.container2 {
+    background-color: #F7F9F6;
+    height: 200px;
+}
+
+  .button{
+    background-color: #4CAF50;
+    padding: 1.7%;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: #585858;
+    font-family: "Monaco", Times, serif;
+  }
+  .button:hover{
+    background-color: #F7F9F6;
+    text-decoration-color: #FFFFFF;
+    cursor: pointer;
+  }
+  .secbutton{
+    padding: 1.7%;
+    margin-top: 150px;
+    margin-left: 300px;
+    margin-right: 85px;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    background-color: #ADEEA2 !important;
+    border: #585858;
+    color: #585858;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Monaco", Times, serif;
+  }
+  .secbutton:hover{
+    background-color: #F7F9F6;
+    text-decoration-color: #FFFFFF;
+    cursor: pointer;
+  }
+  h2{
+    color: #585858;
+    font-size: 2rem;
+    margin: 2%;
+    font-family: "Monaco", Times, serif;
+  }
+  h3{
+    color: #ADEEA2 !important;
+    font-size: 1rem;
+    margin: 2%;
+    font-family: "Monaco", Times, serif;
+  }
+  .mainPage{
+    width: 100%;
+    margin: 0%;
+    height: 450px;
+    border: 7px solid #ADEEA2;
+    padding: 25px;
+    background-color: #F7F9F6;
+    border-radius: 10px;
+  }
+  .column {
+    float: right;
+    width: 45%;
+    padding: 20px;
+    margin: .7%;
+    height: 175px;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+.image-cont{
+  width : 100%;
+}
+.image-shape{
+  border-radius: 10px;
+}

@@ -1,0 +1,48 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "../app/index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "dev-test": "cd tests && nodemon dev-test",
+    "start": "node ./app",
+    "dev": "nodemon ./app"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "jest": "^23.5.0",
+    "nodemon": "^1.18.3",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^3.1.9-1",
+    "dotenv": "^16.0.3",
+    "elliptic": "^6.4.1",
+    "express": "^4.18.2",
+    "fsevents": "^2.3.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.4",
+    "node-rsa": "^1.1.1",
+    "uuid": "^3.4.0",
+    "ws": "^6.0.0"
+  }
+}
